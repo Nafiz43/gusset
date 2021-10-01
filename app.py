@@ -4,17 +4,18 @@ import pickle
 from numpy import inf
 
 
-app = Flask(__name__,static_url_path = "/tmp", static_folder = "tmp")
-rf_model = pickle.load(open('rf.pkl', 'rb'))
-ab_model = pickle.load(open('ab.pkl', 'rb')) 
-cb_model = pickle.load(open('cb.pkl','rb'))
-dt_model = pickle.load(open('dt.pkl','rb'))
-knn_model = pickle.load(open('knn.pkl','rb'))
-lasso_model = pickle.load(open('lasso.pkl','rb'))
+app = Flask(__name__,static_url_path = "/templates", static_folder = "templates")
 lr_model = pickle.load(open('lr.pkl','rb'))
 ridge_model = pickle.load(open('rr.pkl','rb'))
+lasso_model = pickle.load(open('lasso.pkl','rb'))
+dt_model = pickle.load(open('dt.pkl','rb'))
+rf_model = pickle.load(open('rf.pkl', 'rb'))
+knn_model = pickle.load(open('knn.pkl','rb'))
 svr_model = pickle.load(open('svr.pkl','rb'))
-xg_model = pickle.load(open('xb.pkl','rb'))
+xg_model = pickle.load(open('ab.pkl','rb'))
+ab_model = pickle.load(open('ab.pkl', 'rb')) 
+cb_model = pickle.load(open('cb.pkl','rb'))
+
 
 
 scaler = pickle.load(open('scaler.pkl', 'rb'))
@@ -136,7 +137,7 @@ def predict():
     
 
     
-    return render_template('index.html', rf='{}'.format(rf_prediction_o), ab='{}'.format(ab_prediction_o),cb='{}'.format(cb_prediction_o), dt='{}'.format(dt_prediction_o), knn='{}'.format(knn_prediction_o), lasso='{}'.format(lasso_prediction_o), lr='{}'.format(lr_prediction_o), rr='{}'.format(ridge_prediction_o),svr='{}'.format(svr_prediction_o), xg='{}'.format(xg_prediction_o)) 
+    return render_template('index.html', rf='{}'.format(rf_prediction_o), ab='{}'.format(ab_prediction_o),cb='{}'.format(cb_prediction_o), dt='{}'.format(dt_prediction_o), knn='{}'.format(knn_prediction_o), lasso='{}'.format(lasso_prediction_o), lr='{}'.format(lr_prediction_o), ridge='{}'.format(ridge_prediction_o),svr='{}'.format(svr_prediction_o), xg='{}'.format(xg_prediction_o)) 
 
 
 if __name__ == "__main__":
